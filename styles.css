@@ -1,0 +1,81 @@
+body {
+  background: linear-gradient(
+    45deg,
+    rgb(118, 201, 255),
+    rgb(247, 255, 222)
+  ); /* background color is 45deg, from color 1 to color 2 */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: clip; /* removes scrollbars on horizontal and vertical */
+}
+
+.ground {
+  width: 100vw;
+  height: 400px;
+  background: linear-gradient(90deg, rgb(88, 175, 236), rgb(182, 255, 255));
+  position: absolute; /* When an absolute positon doesn't have position properties set, it will move as normal */
+  margin-top: -58px;
+  z-index: 3; /* Third on the z-index stack */
+}
+
+.penguin {
+  width: 300px;
+  height: 300px;
+  margin: 75px auto auto auto; /* center it horizontally */
+  position: relative;
+  z-index: 4;
+}
+
+.penguin-head {
+  height: 45%;
+  width: 50%;
+  background: linear-gradient(45deg, gray, rgb(239, 240, 228));
+  border-radius: 70% 70% 65% 65%;
+}
+
+.penguin-body {
+  width: 53%;
+  height: 45%;
+  background: linear-gradient(
+    45deg,
+    /* tild 45 deg */ rgb(134, 133, 133) 0%,
+    /* from 0%, stop at 25% */ rgb(234, 231, 231) 25%,
+    /* from 25%, stop at 67% */ white 67% /* from 67%, stop at 100% */
+  );
+}
+
+.left-mountain {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(rgb(203, 241, 228), rgb(80, 183, 255));
+  position: absolute;
+  margin-top: 100px;
+  transform: skew(
+    0deg,
+    44deg
+  ); /* skew trasnverse: pulling corner, (X axis, Y axis) */
+  z-index: 2; /* level 2, behing ground at 3 */
+}
+
+.back-mountain {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(rgb(203, 241, 228), rgb(47, 170, 255));
+  position: absolute;
+  z-index: 1;
+  transform: rotate(45deg); /* rotates item, as is */
+  left: 110px;
+  top: 225px;
+}
+
+.sun {
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
+  position: absolute;
+  border-radius: 50%;
+  top: -75px;
+  right: -75px;
+}
