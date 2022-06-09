@@ -18,7 +18,7 @@ body {
 
 .ground {
   width: 100vw;
-  height: 400px;
+  height: calc(100vh - 300px); /* 100 viewport height, minus 300px */
   background: linear-gradient(90deg, rgb(88, 175, 236), rgb(182, 255, 255));
   position: absolute; /* When an absolute positon doesn't have position properties set, it will move as normal */
   margin-top: -58px;
@@ -31,6 +31,9 @@ body {
   margin: 75px auto auto auto; /* center it horizontally */
   position: relative;
   z-index: 4;
+  transition-duration: 1s; /* transition behaviour rules, into activate; Duration 1s */
+  transition-timing-function: ease-in-out; /* timining of animation curve; slow start and end */
+  transition-delay: 0ms; /* no delay */
 }
 
 .penguin * {
@@ -173,21 +176,53 @@ body {
   opacity: 70%; /* Transparecy / opacity */
 }
 
+.penguin:active {
+  /* when user click on it/active it */
+  transform: scale(
+    1.5
+  ); /* scale of X and Y x 1.5 (it will even out, not loose aspect ratio */
+  cursor: not-allowed; /* An active element's cursor insuate you can drag it, but you can't. To avoid confusion, remove cursor change */
+}
+
 .arm {
   width: 30%;
   height: 60%;
   background: linear-gradient(90deg, gray, rgb(209, 210, 199));
+  border-radius: 30% 30% 30% 120%;
+  z-index: -1;
 }
 
 .arm.left {
   top: 35%;
   left: 5%;
   transform-origin: top left; /* changes the pivot/rotation point: Defualt is center center; it rotates the element on its same posiont; but there is also top left, top center, top right, center left, bottom left, bottom right, etc */
+  transform: rotate(130deg) scaleX(-1); /* X scales the elements. Negative values will invert its axis, flipping the image */
+  animation-name: wave; /* linking it to the @keyframe ruleset */
+  animation-duration: 3s; /* rule on duration */
+  animation-iteration-count: infinite; /* rule on iteration */
+  animation-timing-function: linear; /* speed curve of the animation; same speed start to end */
+}
+
+@keyframes wave {
+  /* Element animation code: gradual rules, in terms of percetages */
+  10% {
+    transform: rotate(110deg) scaleX(-1);
+  }
+  20% {
+    transform: rotate(130deg) scaleX(-1);
+  }
+  30% {
+    transform: rotate(110deg) scaleX(-1);
+  }
+  40% {
+    transform: rotate(130deg) scaleX(-1);
+  }
 }
 
 .arm.right {
   top: 0%;
   right: -5%;
+  transform: rotate(-45deg);
 }
 
 .foot {
